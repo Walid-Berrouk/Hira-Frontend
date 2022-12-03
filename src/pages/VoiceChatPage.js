@@ -36,8 +36,8 @@ export default function VoiceChatPage(){
   }
 
   useEffect(() => {
-    var scrollerContainer = document.getElementById("scroller-container");
-    console.log(scrollerContainer.scrollBottom)
+    let scrollerContainer = document.getElementById("scroller-container");
+    scrollerContainer.scrollTop = scrollerContainer.scrollHeight
   }, [questions])
 
 

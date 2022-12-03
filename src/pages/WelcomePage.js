@@ -1,5 +1,6 @@
 import React from 'react'
 import About from '../components/landing/About'
+import Features from '../components/landing/Features'
 import Hero from '../components/landing/Hero'
 import LatestUpdates from '../components/landing/LatestUpdates'
 import Partners from '../components/landing/Partners'
@@ -16,6 +17,7 @@ export default function WelcomePage() {
       <div className='bg-blackRussian'>
         <LatestUpdates />
         <Partners />
+        <Features />
       </div>
     </div>
   )

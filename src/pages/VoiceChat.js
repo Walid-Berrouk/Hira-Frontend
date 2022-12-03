@@ -15,8 +15,7 @@ import voiceVibes from "../../src/assets/voiceVibes.mp4"
 
 const VoiceChat = () => {
 
-  const ref = useRef(null)
-  const commands = [{command : '*' , callback : (vocalMessage) => { addBubble(`${vocalMessage}`) }}]
+  const commands = [{command : '*' , callback : (vocalMessage) => { handleVoiceInput(`${vocalMessage}`) }}]
   const [isVocal , setIsVocal ] = useState(true)
   const {
         transcript,
@@ -25,21 +24,37 @@ const VoiceChat = () => {
         browserSupportsSpeechRecognition
       } = useSpeechRecognition({commands});
 
-  const [questions , setQuestion] = useState([])
+  const interviewQuestions = ["Hello , welcome to haira assistant : what's your name" , "question 2" , "question 3" , "question 4" , "question 5"]
+  const [cptQuestions,setCptQuestions]  = useState(0)
+  const [messages , setMessages] = useState([])
+
 
   const addBubble = (text)=> {
     if (text) {
-      setQuestion([ ...questions , {text:text ,response:`Hey i just answered you question`}])
-      resetTranscript()
-      speak({ text: `Hey i just answered you question`, voice: voices[2] })
+      setMessages([ ...messages , {message :text , isBot:true }])
+      speak({ text: text, voice: voices[2] })
+      // SpeechRecognition.startListening()
+      setCptQuestions(cptQuestions+1)
+  
+    }
+  }
 
+  const handleVoiceInput = (vocalMessage)=> {
+    if(vocalMessage != ""){
+      setMessages([ ...messages , {message :vocalMessage , isBot:false } , {message :interviewQuestions[cptQuestions] , isBot:true }])
+      speak({ text: interviewQuestions[cptQuestions], voice: voices[2] })
+      // SpeechRecognition.startListening()
+      setCptQuestions(cptQuestions+1)
+      resetTranscript()
     }
   }
 
 
   const { speak, voices} = useSpeechSynthesis();
 
-
+useEffect((e)=> {
+  addBubble(interviewQuestions[0])
+},[])
  
 // in case the user want to input his data manually (txt)
   useEffect((e) => {
@@ -54,7 +69,7 @@ const VoiceChat = () => {
         if (e.keyCode == 13) {
           
           if (input && input.value){
-            addBubble(input.value)
+            handleVoiceInput(input.value )
           }
         
           setIsVocal(!isVocal)
@@ -87,20 +102,18 @@ const VoiceChat = () => {
 
 
 
-  
 
   
   return ( 
     <div className=" relative pt-8 bg-black flex justify-top items-center flex-col h-screen  " >
       <div className="shadow-top-down h-full flex flex-row items-center justify-center">
         <div id='scroller-container' className="flex flex-col  max-h-[480px]  overflow-y-auto px-0 sm:px-10 overflow-x-hidden ">
-
           {
-          questions.map((message,index)=> (
-              <>
-                <BubbleUser  text = {message.text}   key={index*2}/>
-                <BubbleBot  text = {message.response}   key={index*2+1}/>
-              </>
+          messages.map((message,index)=> (
+              <div key={index}>
+                {!message.isBot && <BubbleUser  text = {message.message}  />}
+                 {message.isBot && <BubbleBot  text = {message.message}  />}
+              </div>
           ))
           }
           

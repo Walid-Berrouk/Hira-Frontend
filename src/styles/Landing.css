@@ -1,6 +1,7 @@
 .landing-body {
     background-image: url("../assets/imgs/bg-landing.png");
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .landing-shadow {

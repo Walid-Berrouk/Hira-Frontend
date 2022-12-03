@@ -95,12 +95,14 @@ const VoiceChat = () => {
       <div className="shadow-top-down h-full flex flex-row items-center justify-center">
         <div id='scroller-container' className="flex flex-col  max-h-[480px]  overflow-y-auto px-0 sm:px-10 overflow-x-hidden ">
 
-          {questions.map((message,index)=> (
+          {
+          questions.map((message,index)=> (
               <>
                 <BubbleUser  text = {message.text}   key={index*2}/>
                 <BubbleBot  text = {message.response}   key={index*2+1}/>
               </>
-          ))}
+          ))
+          }
           
 
         </div>
@@ -131,8 +133,8 @@ const VoiceChat = () => {
     
 
     {!isVocal && 
-      <div id="input-controls" className={!isVocal ? "block" : "hidden"}>
-        <input id="questionInput" type="textfield" className="w-[600px] p-4 bg-black text-white font-[26px] border border-white mb-6" ></input>
+      <div id="input-controls" >
+        <input id="questionInput" type="textfield" className="w-[600px] p-4 bg-black text-white font-[26px] rounded-sm border border-white mb-6" ></input>
       </div>
     }
 

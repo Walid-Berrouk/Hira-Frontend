@@ -7,6 +7,7 @@ import SignInPage from '../pages/SignInPage'
 import WelcomePage from '../pages/WelcomePage';
 import Footer from './general/Footer';
 import SignUpPage from '../pages/SignUpPage';
+import VoiceChatPage from '../pages/VoiceChatPage';
 
 
 function Main() {
@@ -25,6 +26,7 @@ export default function Layout() {
         <Routes>
             <Route path="/signInPortal" element={<SignInPage />} />
             <Route path="/signUpPortal" element={<SignUpPage />} />
+            <Route path="/signUpAssistance" element={<VoiceChatPage />} />
             <Route path="Main" element={<Main />}>
                 <Route path="Welcome" element={<WelcomePage />} />
             </Route>

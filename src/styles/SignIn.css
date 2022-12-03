@@ -1,0 +1,14 @@
+.signIn-body {
+    background-image: url("../assets/imgs/bg-signIn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.special-input {
+    border-radius: 23px;
+    background: transparent;
+    background-image: url("../assets/imgs/input-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}

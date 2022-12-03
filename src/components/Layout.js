@@ -6,6 +6,7 @@ import Navbar from './general/Navbar';
 import SignInPage from '../pages/SignInPage'
 import WelcomePage from '../pages/WelcomePage';
 import Footer from './general/Footer';
+import SignUpPage from '../pages/SignUpPage';
 
 
 function Main() {
@@ -23,6 +24,7 @@ export default function Layout() {
     return (
         <Routes>
             <Route path="/signInPortal" element={<SignInPage />} />
+            <Route path="/signUpPortal" element={<SignUpPage />} />
             <Route path="Main" element={<Main />}>
                 <Route path="Welcome" element={<WelcomePage />} />
             </Route>

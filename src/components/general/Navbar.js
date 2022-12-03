@@ -72,7 +72,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <a href="/Main/Welcome" className='flex items-center gap-x-2'>
-              <LogoMonoMotion />
+              <LogoMonoMotion width={"120"}/>
               <span className="text-white font-semibold text-3xl">Hira</span>
             </a>
           </div>

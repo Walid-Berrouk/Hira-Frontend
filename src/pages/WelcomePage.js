@@ -1,11 +1,11 @@
 import React from 'react'
-import About from '../components/landing/About'
-import Features from '../components/landing/Features'
-import Hero from '../components/landing/Hero'
-import Join from '../components/landing/Join'
-import LatestUpdates from '../components/landing/LatestUpdates'
-import Partners from '../components/landing/Partners'
-import "../styles/Landing.css"
+import About from '../components/welcome/About'
+import Features from '../components/welcome/Features'
+import Hero from '../components/welcome/Hero'
+import Join from '../components/welcome/Join'
+import LatestUpdates from '../components/welcome/LatestUpdates'
+import Partners from '../components/welcome/Partners'
+import "../styles/Welcome.css"
 
 export default function WelcomePage() {
   return (

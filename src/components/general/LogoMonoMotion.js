@@ -2,11 +2,12 @@ import { useRef } from "react";
 
 import VideoLoop from "../../assets/videos/locked.mp4"
 
-export default function LogoMonoMotion() {
+export default function LogoMonoMotion({width}) {
   const ref = useRef(null);
   return (
       <video
-        className="h-16 rounded-full"
+        width={width}
+        className="rounded-full"
         style={{mixBlendMode: 'lighten'}}
         src={VideoLoop}
         autoPlay

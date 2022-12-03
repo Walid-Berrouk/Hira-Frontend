@@ -6,7 +6,7 @@ import Logo from '../../assets/imgs/logo.png'
 
 export default function About() {
   return (
-    <div className='h-screen text-white flex flex-col items-center justify-center mt-32'>
+    <div id="about" className='h-screen text-white flex flex-col items-center justify-center mt-32'>
         <h1 className='md:text-5xl text-3xl text-center capitalize mt-20 mx-24'><span className='font-bold'>Hira,</span> Another Way to Get Hired</h1>
         <img
             className="mt-16 h-10 w-auto sm:h-12"

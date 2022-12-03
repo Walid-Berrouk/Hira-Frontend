@@ -32,8 +32,8 @@ const features = [
 
 export default function Features() {
 
-    const featuresList = features.map(feature => (
-        <div className="mb-12">
+    const featuresList = features.map((feature, id) => (
+        <div key={id} className="mb-12">
             <div className="flex">
                 <div className="shrink-0 mt-1">
                     <CheckCircleIcon className="w-6 h-6 text-tangBlue"/>
@@ -47,7 +47,7 @@ export default function Features() {
     ))
 
   return (
-    <div classNameName='h-screen text-white flex flex-col items-center justify-center'>
+    <div id="features" className='h-screen text-white flex flex-col items-center justify-center'>
         <section className="text-white">
         <div className="flex justify-center">
             <div className="text-center max-w-[700px]">

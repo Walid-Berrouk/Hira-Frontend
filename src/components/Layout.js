@@ -2,17 +2,18 @@ import React, {  useEffect } from 'react'
 import { Navigate, Routes, Route, useParams, useNavigate, useMatch, useLocation, Outlet } from 'react-router-dom';
 
 import Navbar from './general/Navbar';
+
 import SignInPage from '../pages/SignInPage'
-import CartesPage from '../pages/CartesPage'
 import WelcomePage from '../pages/WelcomePage';
+import Footer from './general/Footer';
 
 
 function Main() {
     return (
-        <div>
-        <Navbar />
-        <Outlet />
-        {/* <Footer /> */}
+        <div className='bg-blackRussian'>
+            <Navbar />
+            <Outlet />
+            <Footer />
         </div>
     )
 }

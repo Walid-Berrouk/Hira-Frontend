@@ -11,7 +11,8 @@ module.exports = {
       colors: {
         'tangBlue' : '#0358D9',
         'tangBlueDark' : '#034CBC',
-        'blackRussian' : '#000013'
+        'blackRussian' : '#000013',
+        'darkBlue' : '#00008B'
       }
     },
   },

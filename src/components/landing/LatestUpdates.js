@@ -7,7 +7,7 @@ import youtubeVideo from '../../assets/imgs/youtube-video.png'
 
 export default function LatestUpdates() {
   return (
-    <div className='text-white flex flex-col justify-center pt-32 px-20'>
+    <div id="latest-updates" className='text-white flex flex-col justify-center pt-32 px-20'>
         <h1 className='md:text-5xl text-3xl text-left capitalize mt-20 mx-24'>What's <span className='font-bold'>New with Hira ?</span></h1>
         <div className='flex mt-24 items-center justify-center gap-x-16'>
             <div>

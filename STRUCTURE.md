@@ -33,7 +33,7 @@ You will be putting all routers in this folder, the main router is called `Layou
 We prefer to use style as separate components for each page, it will help in the styling process, usability of files in order to change styles and implimentation of styles components module if the team agreed to use it.
 
 `Note:` Please Try to respect this structure in order to make the work coherant.
-`Another Note:` Please try to not interfeer in other work or in their configuration, make your code as independant as possible.
+`Another Note:` Please try to not interfeer in other work or in their configuration, make your code as independant as possible. To ensure that, you can use `pagename-classname`.
 
 ## Tailwind Test
 

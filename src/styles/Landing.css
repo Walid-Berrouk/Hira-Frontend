@@ -1,0 +1,9 @@
+.landing-body {
+    background-image: url("../assets/imgs/bg-landing.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.landing-shadow {
+    box-shadow: 10px 10px 99px #2072ec;
+}

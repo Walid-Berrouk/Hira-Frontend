@@ -8,12 +8,12 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import BubbleBot from '../components/voiceChat/BubbleBot';
 import BubbleUser from '../components/voiceChat/BubbleUser';
 // styles
-import   "../styles/voice_chat.css"
+import   "../styles/VoiceChat.css"
 // video animations :
 import staticLogoAnimation from "../../src/assets/static.mp4"
 import voiceVibes from "../../src/assets/voiceVibes.mp4"
 
-const VoiceChat = () => {
+export default function VoiceChatPage(){
 
   const ref = useRef(null)
   const commands = [{command : '*' , callback : (vocalMessage) => { addBubble(`${vocalMessage}`) }}]
@@ -32,9 +32,13 @@ const VoiceChat = () => {
       setQuestion([ ...questions , {text:text ,response:`Hey i just answered you question`}])
       resetTranscript()
       speak({ text: `Hey i just answered you question`, voice: voices[2] })
-
     }
   }
+
+  useEffect(() => {
+    var scrollerContainer = document.getElementById("scroller-container");
+    console.log(scrollerContainer.scrollBottom)
+  }, [questions])
 
 
   const { speak, voices} = useSpeechSynthesis();
@@ -97,10 +101,10 @@ const VoiceChat = () => {
 
           {
           questions.map((message,index)=> (
-              <>
-                <BubbleUser  text = {message.text}   key={index*2}/>
-                <BubbleBot  text = {message.response}   key={index*2+1}/>
-              </>
+              <div key={index}>
+                <BubbleUser  text = {message.text}  />
+                <BubbleBot  text = {message.response}  />
+              </div>
           ))
           }
           
@@ -113,7 +117,7 @@ const VoiceChat = () => {
         <div id='voice-controls' >
         {listening &&
           <button onClick={SpeechRecognition.stopListening}  className="mb-6">
-            <video width={"380" } autoPlay loop muted>
+            <video width={"380"} autoPlay loop muted>
                 <source src={ voiceVibes} type="video/mp4"/>
             </video> 
           </button>
@@ -122,7 +126,7 @@ const VoiceChat = () => {
         
         {!listening &&
           <button onClick={SpeechRecognition.startListening} className="mb-6">  
-              <video width={ "200"} autoPlay loop muted>
+              <video width={"200"} autoPlay loop muted>
                   <source src={ staticLogoAnimation} type="video/mp4"/>
               </video>
           </button>
@@ -145,5 +149,3 @@ const VoiceChat = () => {
     </div>
    );
 }
- 
-export default VoiceChat;

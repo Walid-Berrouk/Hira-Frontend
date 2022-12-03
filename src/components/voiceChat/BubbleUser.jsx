@@ -6,7 +6,7 @@ const BubbleUser = ({text }) => {
     return ( 
         <div className="flex items-start mb-4">
            
-           <div className=" opacity-0 w-[32px]sm:w-[64px] h-[32px]sm:h-[64px] mr-5">
+           <div className=" opacity-0 w-[32px]sm:w-[64px] h-[32px]sm:h-[64px] sm:mr-5">
                 <Logo className="object-contain w-[64px] h-[64px]"  />
             </div>
 
@@ -16,7 +16,7 @@ const BubbleUser = ({text }) => {
                 </div>
             </div>
 
-            <div className="w-[26px] h-[26px] sm:w-[58px] sm:h-[58px] ml-5">
+            <div className="w-[26px] h-[26px] sm:w-[58px] sm:h-[58px] sm:ml-5">
                 <User className="object-contain w-[58px] h-[58px]"  />
             </div>
         </div> 

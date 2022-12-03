@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef , useEffect, useState } from 'react';
 
 // packages to transform voice to text and text to voice
 import { useSpeechSynthesis } from 'react-speech-kit';
@@ -15,9 +15,9 @@ import voiceVibes from "../../src/assets/voiceVibes.mp4"
 
 const VoiceChat = () => {
 
-
+  const ref = useRef(null)
   const commands = [{command : '*' , callback : (vocalMessage) => { addBubble(`${vocalMessage}`) }}]
-
+  const [isVocal , setIsVocal ] = useState(true)
   const {
         transcript,
         listening,
@@ -32,16 +32,62 @@ const VoiceChat = () => {
       setQuestion([ ...questions , {text:text ,response:`Hey i just answered you question`}])
       resetTranscript()
       speak({ text: `Hey i just answered you question`, voice: voices[2] })
+
     }
   }
 
 
   const { speak, voices} = useSpeechSynthesis();
 
+
+ 
+// in case the user want to input his data manually (txt)
+  useEffect((e) => {
+    const handlePressingKey = e => {
+     if (!listening){
+
+        var input = document.getElementById("questionInput")
+        if(input)  {
+          input.focus();
+        }
+
+        if (e.keyCode == 13) {
+          
+          if (input && input.value){
+            addBubble(input.value)
+          }
+        
+          setIsVocal(!isVocal)
+
+
+        }else{
+          setIsVocal(false)
+        } 
+      }
+    };
+
+    
+    document.addEventListener("keypress" , handlePressingKey)
+
+    return () => {
+      document.removeEventListener('keypress', handlePressingKey);
+    };
+  
+  }, [isVocal,listening]);
+
+
+
+
+
     // handling errors :
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
+
+
+
+
+  
 
   
   return ( 
@@ -60,22 +106,37 @@ const VoiceChat = () => {
         </div>
       </div>
 
-      
-    {listening &&
-      <button onClick={SpeechRecognition.stopListening}  className="mb-6">
-        <video width={"380" } autoPlay loop muted>
-            <source src={ voiceVibes} type="video/mp4"/>
-        </video> 
-      </button>
+    
+      {isVocal &&
+        <div id='voice-controls' >
+        {listening &&
+          <button onClick={SpeechRecognition.stopListening}  className="mb-6">
+            <video width={"380" } autoPlay loop muted>
+                <source src={ voiceVibes} type="video/mp4"/>
+            </video> 
+          </button>
+        }
+        
+        
+        {!listening &&
+          <button onClick={SpeechRecognition.startListening} className="mb-6">  
+              <video width={ "200"} autoPlay loop muted>
+                  <source src={ staticLogoAnimation} type="video/mp4"/>
+              </video>
+          </button>
+        }  
+      </div>
+
     }
-     
-    {!listening &&
-       <button onClick={SpeechRecognition.startListening} className="mb-6">  
-          <video width={ "200"} autoPlay loop muted>
-              <source src={ staticLogoAnimation} type="video/mp4"/>
-          </video>
-      </button>
-    }  
+    
+
+    {!isVocal && 
+      <div id="input-controls" className={!isVocal ? "block" : "hidden"}>
+        <input id="questionInput" type="textfield" className="w-[600px] p-4 bg-black text-white font-[26px] border border-white mb-6" ></input>
+      </div>
+    }
+
+    
 
         
 

@@ -51,12 +51,13 @@ export default function Navbar(props) {
       <div className=" max-w-[90rem] mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="/Main/Welcome">
+            <a href="/Main/Welcome" className='flex items-center gap-x-6'>
               <img
                 className="ml-6 h-10 w-auto sm:h-12"
                 src={Logo}
                 alt=""
               />
+              <span className="text-white font-semibold text-3xl">Hira</span>
             </a>
           </div>
           <div className="-mr-2 -my-2 md:hidden">

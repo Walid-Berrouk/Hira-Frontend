@@ -10,7 +10,8 @@ module.exports = {
       },
       colors: {
         'tangBlue' : '#0358D9',
-        'tangBlueDark' : '#034CBC'
+        'tangBlueDark' : '#034CBC',
+        'blackRussian' : '#000013'
       }
     },
   },

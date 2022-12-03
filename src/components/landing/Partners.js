@@ -7,7 +7,7 @@ import Google from '../../assets/imgs/google.png'
 
 export default function Partners() {
   return (
-    <div className='h-screen text-white flex flex-col items-center justify-center'>
+    <div id="partners" className='h-screen text-white flex flex-col items-center justify-center'>
         <h1 className='md:text-5xl text-3xl text-center capitalize mx-24 font-bold'>They Trusted Us Along the way</h1>
         <div className='flex gap-x-28 justify-center mt-24 mx-24'>
             <img src={Lenovo} alt="Lenovo" className='h-12'/>

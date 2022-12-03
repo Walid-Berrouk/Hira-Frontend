@@ -1,5 +1,5 @@
 import React from 'react'
-import { Fragment } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { Popover, Transition, Menu } from '@headlessui/react'
 import {
   CursorClickIcon,
@@ -12,9 +12,8 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-// Logos
-import Logo from '../../assets/imgs/logo.png'
-// import LogoAppName from '../../assets/app-name-icon.svg'
+// Logo
+import LogoMonoMotion from '../general/LogoMonoMotion'
 
 // Components
 import ProfileNav from './ProfileNav'
@@ -45,18 +44,35 @@ const solutions = [
     icon:  CursorClickIcon},
 ]
 
-export default function Navbar(props) {
+export default function Navbar() {
+
+  //navbar scroll when active state
+  const [navbar, setNavbar] = useState(false)
+
+  //navbar scroll changeBackground function
+  const changeBackground = () => {
+    // console.log(window.scrollY)
+    if (window.scrollY >= 66) {
+      setNavbar(true)
+    } else {
+      setNavbar(false)
+    }
+  }
+
+  useEffect(() => {
+    changeBackground()
+    // adding the event when scroll change background
+    window.addEventListener("scroll", changeBackground)
+  })
+
+
   return (
-    <Popover className="fixed z-20 w-full font-montserrat">
+    <Popover className={"fixed z-20 w-full font-montserrat" + (navbar ? " landing-navbar-active" : " bg-transparent")}>
       <div className=" max-w-[90rem] mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="/Main/Welcome" className='flex items-center gap-x-6'>
-              <img
-                className="ml-6 h-10 w-auto sm:h-12"
-                src={Logo}
-                alt=""
-              />
+            <a href="/Main/Welcome" className='flex items-center gap-x-2'>
+              <LogoMonoMotion />
               <span className="text-white font-semibold text-3xl">Hira</span>
             </a>
           </div>
@@ -122,11 +138,7 @@ export default function Navbar(props) {
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <img
-                    className="h-8 w-auto"
-                    src={Logo}
-                    alt="Workflow"
-                  />
+                  <LogoMonoMotion />
                 </div>
                 <div className="-mr-2">
                   <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-tangBlue">

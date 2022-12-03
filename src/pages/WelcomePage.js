@@ -1,6 +1,8 @@
 import React from 'react'
 import About from '../components/landing/About'
+import Features from '../components/landing/Features'
 import Hero from '../components/landing/Hero'
+import Join from '../components/landing/Join'
 import LatestUpdates from '../components/landing/LatestUpdates'
 import Partners from '../components/landing/Partners'
 import "../styles/Landing.css"
@@ -16,6 +18,8 @@ export default function WelcomePage() {
       <div className='bg-blackRussian'>
         <LatestUpdates />
         <Partners />
+        <Features />
+        <Join />
       </div>
     </div>
   )
